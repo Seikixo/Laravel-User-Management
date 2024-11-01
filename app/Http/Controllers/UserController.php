@@ -8,18 +8,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $users = User::all();
         return view('list', ['users' => $users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $user = new User();
@@ -30,9 +25,6 @@ class UserController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validationData = $request->validate([
@@ -45,26 +37,19 @@ class UserController extends Controller
         return redirect('/')->with('success', 'User Created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
         return view('form', ['user' => $user, 'actions' => 'Update', 'actionsURL' => '/update' . $id]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $validationData = $request->validate([
@@ -81,9 +66,6 @@ class UserController extends Controller
         return view('/')->with('success', 'User Updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
        $user = User::findOrFail($id);
