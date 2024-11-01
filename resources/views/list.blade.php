@@ -8,7 +8,7 @@
     @endif
 
     <div>
-        <a class="btn btn-success" href="{{ route('users.create') }}">Add User</a>
+        <a class="btn btn-success" href="{{ route('create') }}">Add User</a>
     </div>
 
     <table class="table table-striped">
@@ -19,14 +19,14 @@
             <th>Actions</th>
         </tr>
 
-        @foreach ($users as $user)
+        @foreach ($employees as $employee)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{$user->age }}</td>
+                <td>{{ $employee->id }}</td>
+                <td>{{ $employee->name }}</td>
+                <td>{{$employee->age }}</td>
                 <td>
-                    <a class="btn btn-success" href="{{ route('users.edit', ['id' => $user->id]) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('users.destroy', ['id' => $user->id]) }}">Delete</a>
+                    <a class="btn btn-success" href="{{ route('edit', ['id' => $employee->id]) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ route('destroy', ['id' => $employee->id]) }}">Delete</a>
                 </td>
             </tr>
         @endforeach
